@@ -64,7 +64,7 @@ def load_mat(path, limit):
     x = np.rollaxis(data['X'], 3, 0)
     y = data['y']-1
 
-    print x.shape, y.shape
+    print (x.shape, y.shape)
 
     return x[:limit], y[:limit]
 

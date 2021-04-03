@@ -105,12 +105,12 @@ def test(one_model=True):
     dataset = load_data()
 
     if one_model:
-        for train_idx in xrange(NUM_TRAINS):
+        for train_idx in range(NUM_TRAINS):
             print ('loading', train_idx)
             models.append(load_model("%s/net_1/%s" % (TRAIN_DIR, TRAIN_FILENAME % train_idx), custom_objects={"backend": backend}))
 
     else:
-        for train_idx in xrange(NUM_TRAINS*2):
+        for train_idx in range(NUM_TRAINS*2):
             print ('loading', train_idx)
             if train_idx < 5:
                 models.append(load_model("%s/net_1/%s" % (TRAIN_DIR, TRAIN_FILENAME % train_idx), custom_objects={"backend": backend}))

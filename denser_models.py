@@ -106,12 +106,12 @@ def test(one_model=True):
 
     if one_model:
         for train_idx in xrange(NUM_TRAINS):
-            print 'loading', train_idx
+            print ('loading', train_idx)
             models.append(load_model("%s/net_1/%s" % (TRAIN_DIR, TRAIN_FILENAME % train_idx), custom_objects={"backend": backend}))
 
     else:
         for train_idx in xrange(NUM_TRAINS*2):
-            print 'loading', train_idx
+            print ('loading', train_idx)
             if train_idx < 5:
                 models.append(load_model("%s/net_1/%s" % (TRAIN_DIR, TRAIN_FILENAME % train_idx), custom_objects={"backend": backend}))
             else:
@@ -120,7 +120,7 @@ def test(one_model=True):
 
 
     for model in models:
-        print 'predicting...'
+        print ('predicting...')
         for _ in range(AUGMENT_TEST):
             x_test_augmented = np.array([augmentation(image) for image in dataset['x_test']])
             predictions.append(model.predict(x_test_augmented, batch_size=BATCH_SIZE, verbose=2))
@@ -130,7 +130,7 @@ def test(one_model=True):
     y_true = np.argmax(dataset['y_test'], axis=1)
     accuracy = accuracy_score(y_true, y_pred)
 
-    print accuracy
+    print (accuracy)
 
 NUM_TRAINS = 5
 
@@ -218,7 +218,7 @@ if __name__ == '__main__':
             multiple = False
 
     if DATASET is None:
-        print 'Invalid dataset!'
+        print ('Invalid dataset!')
 
     else:
         test(multiple)
